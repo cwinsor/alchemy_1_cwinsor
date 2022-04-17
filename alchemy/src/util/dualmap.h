@@ -73,8 +73,8 @@ using namespace __gnu_cxx;
 #include "array.h"
 #include "equalstr.h"
 
-
-typedef hash_map<const char*, int, hash<const char*>, EqualStr> StrToIntMap;
+// zona
+typedef hash_map<const char*, int, __gnu_cxx::hash<const char*>, EqualStr> StrToIntMap;
 
 
   // Maps int to const char* and vice versa.

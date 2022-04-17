@@ -74,7 +74,8 @@ using namespace __gnu_cxx;
 class HashInt
 {
  public:
-  size_t operator()(const int& i) const { return hash<int>()(i); }
+    // zona
+  size_t operator()(const int& i) const { return __gnu_cxx::hash<int>()(i); }
 };
 
 class EqualInt

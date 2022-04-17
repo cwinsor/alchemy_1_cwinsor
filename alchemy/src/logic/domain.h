@@ -67,6 +67,7 @@
 #ifndef DOMAIN_H_JUN_21_2005
 #define DOMAIN_H_JUN_21_2005
 
+
 #include <ext/hash_set>
 #include "equalstr.h"
 #include "dualmap.h"
@@ -81,12 +82,10 @@ class Database;
 class TrueFalseGroundingsStore;
 class MLN;
 
-
-typedef hash_map<const char*, const PredicateTemplate*, hash<const char*>,
-                 EqualStr>  StrToPredTemplateMap;
-
-typedef hash_map<const char*, const FunctionTemplate*, hash<const char*>,
-                 EqualStr>  StrToFuncTemplateMap;
+// zona
+typedef hash_map<const char*, const PredicateTemplate*>  StrToPredTemplateMap;
+// zona
+typedef hash_map<const char*, const FunctionTemplate*>  StrToFuncTemplateMap;
 
 
 class Domain
