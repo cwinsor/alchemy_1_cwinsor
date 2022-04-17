@@ -1,0 +1,108 @@
+
+How to set up Alchemy (University of Washington - Domingos et. al.)
+
+The following are steps to set up Alchemy.  Alchemy "is a software package providing a series of algorithms for statistical relational learning and probabilistic logic inference, based on the Markov logic representation."
+
+Following these steps allow compiling the C/C++ code, running inference and learning weights and structure. It should be noted the source available from U-W (as of 4/17/2022) does not compile, so a pointer to a github is provided that does compile.
+
+References:
+Main site:  https://alchemy.cs.washington.edu/
+Source code:  https://alchemy.cs.washington.edu/code/
+Datasets:  https://alchemy.cs.washington.edu/data/
+Tutorial Dataset:  https://alchemy.cs.washington.edu/data/tutorial/
+Publication-based datasets:  https://alchemy.cs.washington.edu/mlns/
+
+Github with code that compiles:
+xxxxxxxxxxxxxxxxxx
+
+Steps:
+There are two ways to run Ubuntu: AWS Ubuntu host and TightVNC, Windows 10 WSL (Windows Subsystem for Linux) Ubuntu.
+
+via AWS:
+The following are commands to set up an AWS EC2 running Ubuntu with access to gnome desktop via tightVNC port forwarding.
+
+Open an AWS account.
+On AWS: start an Ubuntu 20 AWS Server.  Recommend t3.2xlarge.  This will include generating .pem key.
+
+On laptop: enable WSL (Windows Subsysem for Linux).  Refere to Microsoft for detailed steps.
+On laptop: start a WSL shell and demonstrate basic SSH access:
+  ssh -i SomeKey.pem   username@192.168.123.456
+On laptop: for future reference a basic SCP (copy) would be:
+  scp some_file.zip  username@192.168.123.456:some_file.zip
+
+On AWS: install tightVNC
+ sudo apt update
+ sudo apt install xfce4 xfce4-goodies gh
+ <this will ask gdm3 or lightdm... lightdm worked for me>
+ sudo apt install tightvncserver
+ vncserver  (this is done only to establish an initial ~.vnc/xstartup)
+ set the password
+You need to edit ./vnc/xstart based on the type of desktop.  An example xstartup below assumes xface (the default desktop).  You can also check what desktop you have set via:   
+grep Exec= /usr/share/xsessions/*.desktop 
+ cd .vnc
+ vi xstartup
+contents of xstartup for xface:
+#!/bin/sh
+DESKTOP_SESSION=xfce
+export DESKTOP_SESSION
+startxfce4
+vncserver-virtual -kill $DISPLAY
+re-start vncserver:
+vncserver -kill :1
+vncserver :1
+
+On the laptop - start a second WSL shell and use it to run port forwarding (port 5901 is tightVNC)
+  ssh -L 5901:127.0.0.1:5901 -C -N -l username 192.168.2.110
+or with pem file...
+  ssh -i pem_blah_blah.pem -L 5901:127.0.0.1:5901 -C -N -l ubuntu 3.17.191.16
+
+On laptop: install VNC viewer.  This involves setting up a VNC account.
+Use the VNC viewer to connect specifying localhost:5901 - this will be forward to the IP above (port forwarding)
+   localhost:5901
+
+At this point you should have access to ubuntu gnome shell on the AWS host.
+On ubuntu...
+To install Chrome
+    4  sudo apt install xfce4 xfce4-goodies
+    5  sudo apt install tightvncserver
+       wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+   22  sudo apt install ./google-chrome-stable_current_amd64.deb
+
+To install Chrome:
+  download it using this command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  execute the downloaded installer: sudo apt install ./google-chrome-stable_current_amd64.deb
+  launch the browser: google-chrome
+  To make the default browser icon to launch google chrome:
+  run xfce4-settings-manager
+  find "Preferred Applications"
+  under "Web Browser", click "Other..."
+  type in /usr/bin/google-chrome
+
+Installing g++, gdb, make, etc etc...
+Alchemy requires make, bison, flex, g++, perl.  The IDE will additionally require gdb.
+The majority of this is achieved via "build_essentials:
+       sudo apt-get update
+       sudo apt-get install build-essential
+then additionally:
+       sudo apt-get install gdb
+       sudo apt-get install bison
+       sudo apt-get install flex
+       sudo apt-get install perl
+
+Confirnm the parts/pieces work:
+  g++ --version
+  gcc --version
+  gdb --version
+  make --version
+
+Install an IDE.  Here I recommend CLion from IntelliJ. There is a 29 day trial but an IDE that works on Linux is definately worth a couple bucks.
+Download and follow the readme to install and start CLion
+Start a project taking the default workspace folder - this will create a folder ~/CLionProjects
+
+At this point you need the Alchemy source.  You can pull the tar from U-Washington but note that will not compile.  The other option is to git pull from https://github.com/cwinsor/alchemy_1_cwinsor.git
+  cd ~/CLionProjects
+  mkdir alchemy_101
+  cd alchemy_101
+  git pull https://github.com/cwinsor/alchemy_1_cwinsor.git
+  Return to the CLion IDE and create new project pointing to source folder above.
+
