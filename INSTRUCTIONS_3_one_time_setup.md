@@ -1,30 +1,27 @@
 
-How to set up Alchemy (University of Washington - Domingos et. al.)
-
-The following are steps to set up Alchemy.  Alchemy "is a software package providing a series of algorithms for statistical relational learning and probabilistic logic inference, based on the Markov logic representation."
-
-Following these steps allow compiling the C/C++ code, running inference and learning weights and structure. It should be noted the source available from U-W (as of 4/17/2022) does not compile, so a pointer to a github is provided that does compile.
-
-References:
-Main site:  https://alchemy.cs.washington.edu/
-Source code:  https://alchemy.cs.washington.edu/code/
-Datasets:  https://alchemy.cs.washington.edu/data/
-Tutorial Dataset:  https://alchemy.cs.washington.edu/data/tutorial/
-Publication-based datasets:  https://alchemy.cs.washington.edu/mlns/
-
-Github with code that compiles:
 xxxxxxxxxxxxxxxxxx
+# One-time Setup
+These are steps to stand up the Ubuntu host, access desktop using VNC port forwarding,
+basic config, and populate the Alchemy project from cwinsor github.
+
+The primary value add is time savings - all the details of 
+Ubuntu config and setting up VNC port forwarding... lots of time.
 
 Steps:
-There are two ways to run Ubuntu: AWS Ubuntu host and TightVNC, Windows 10 WSL (Windows Subsystem for Linux) Ubuntu.
+There are two ways to run Ubuntu: AWS EC2 Ubuntu host and VNC, Windows 10 WSL (Windows Subsystem for Linux) Ubuntu.
+We only have instructions for EC2, but WSL on laptop should be a subset of this.
 
-via AWS:
-The following are commands to set up an AWS EC2 running Ubuntu with access to gnome desktop via tightVNC port forwarding.
+via AWS/EC2:
+The following are commands to set up an AWS EC2 running Ubuntu with access to gnome desktop via VNC port forwarding.
 
 Open an AWS account.
-On AWS: start an Ubuntu 20 AWS Server.  Recommend t3.2xlarge.  This will include generating .pem key.
+On AWS: start an Ubuntu 20 EC2 Server.  t3.2xlarge is what I used and
+may be overkill.  When actively used it can be $20/day - of course
+like any EC2 you need to turn it off when not using it!
 
-On laptop: enable WSL (Windows Subsysem for Linux).  Refere to Microsoft for detailed steps.
+Starting the server provides .pem key for access.
+
+On laptop: enable WSL (Windows Subsysem for Linux).  Refer to Microsoft for detailed steps.
 On laptop: start a WSL shell and demonstrate basic SSH access:
   ssh -i SomeKey.pem   username@192.168.123.456
 On laptop: for future reference a basic SCP (copy) would be:
@@ -89,7 +86,7 @@ then additionally:
        sudo apt-get install flex
        sudo apt-get install perl
 
-Confirnm the parts/pieces work:
+Confirm the parts/pieces work:
   g++ --version
   gcc --version
   gdb --version

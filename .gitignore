@@ -1,3 +1,6 @@
+alchemy/bin
+alchemy/exdata
+
 # Prerequisites
 *.d
 

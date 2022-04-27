@@ -1,6 +1,6 @@
-This assumes AWS Ubuntu host and
-TightVNC  from laptop to the
-Linux desktop.
+This assumes you already have AWS Ubuntu host and
+TightVNC  from laptop to the  Linux desktop
+all set up and working.  If not see README_3.
 
 ## Every time:
 
@@ -12,5 +12,3 @@ Linux desktop.
 4. ssh -i pemfile.pem -L 5901:120.0.0.1:5901 -C -N -l ubuntu 123.456.789.012
 5. vncviewer to localhost:5901
 
-## One time (setup)
-On laptop
