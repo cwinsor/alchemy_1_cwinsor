@@ -96,10 +96,35 @@ vncserver :1
 * Download and follow the readme to install and start CLion
 * Start a project taking the default workspace folder - this will create a folder ~/CLionProjects
 
-* At this point you need the Alchemy source.  Here I am working with the original (Version 1). You can pull the tar from U-Washington but note that may not compile - it is at http://alchemy.cs.washington.edu/alchemy1.html    The other option is to git pull from https://github.com/cwinsor/alchemy_1_cwinsor.git  
+* At this point you need the Alchemy source.  Here I am working with Alchemy classic (Version 1). You can pull the tar from U-Washington but note that may not compile (see bottom) it is at http://alchemy.cs.washington.edu/alchemy1.html    The other option is to git pull from https://github.com/cwinsor/alchemy_1_cwinsor.git  where I have fixed those compile errors.  To get from cwinsor repo:
   * cd ~/CLionProjects
   * mkdir alchemy_101
   * cd alchemy_101
   * git pull https://github.com/cwinsor/alchemy_1_cwinsor.git
   * Return to the CLion IDE and create new project pointing to source folder above.
 
+
+Failure to compile:
+```
+ubuntu@ip-172-31-29-142:~/code_alchemy/alchemy_1a/src$ g++ --version
+g++ (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+ubuntu@ip-172-31-29-142:~/code_alchemy/alchemy_1a/src$ make depend
+updating the dependencies for:
+     ../src/util/arguments.cpp ../src/util/powerset.cpp ../src/util/random.cpp ../src/parser/fol.cpp ../src/parser/listobj.cpp ../src/logic/predicatetemplate.cpp ../src/logic/functiontemplate.cpp ../src/logic/function.cpp ../src/logic/predicate.cpp ../src/logic/term.cpp ../src/logic/domain.cpp ../src/logic/clause.cpp ../src/logic/clausesampler.cpp ../src/infer/groundclause.cpp ../src/learnwts/learnwts.cpp ../src/infer/infer.cpp ../src/learnstruct/learnstruct.cpp ../src/logic/Polynomial.cpp ../src/logic/logichelper.cpp ../src/infer/inferutil.cpp ../src/infer/createhypercube.cpp ../src/infer/createhypercubebasic.cpp ../src/infer/createhypercubedt.cpp ../src/infer/joinhypercube.cpp ../src/infer/refinehypercube.cpp ../src/infer/superpred.cpp ../src/infer/superclause.cpp ../src/infer/node.cpp ../src/infer/factor.cpp
+ubuntu@ip-172-31-29-142:~/code_alchemy/alchemy_1a/src$ make
+g++ -O3 -DNDEBUG -static  -finline-limit=100000 -Wno-deprecated -Wall -I. -I../src/util -I../src/logic -I../src/parser -I../src/learnwts -I../src/learnstruct -I../src/infer -o ../bin/obj/learnwts.o -c ../src/learnwts/learnwts.cpp
+In file included from ../src/learnwts/learnwts.cpp:70:0:
+../src/util/arguments.h:223:43: warning: ISO C++ forbids converting a string constant to `char*' [-Wwrite-strings]
+   static ArgsRetCode parseFromFile(char*f="argsFile");
+                                           ^~~~~~~~~~
+In file included from ../src/infer/inferutil.h:74:0,
+                 from ../src/infer/inferenceargs.h:70,
+                 from ../src/learnwts/learnwts.cpp:71:
+../src/util/array.h: In member function `void Array<Type>::shuffle()':
+../src/util/array.h:371:51: error: cannot call member function `int Random::randomOneOf(const int&)' without object
+       int swapwith = Random::randomOneOf(numItems_);
+```
