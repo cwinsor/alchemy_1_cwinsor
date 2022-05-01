@@ -14,5 +14,7 @@ This git and README are available from: https://github.com/cwinsor/alchemy_1_cwi
   * Entity Resolution
   * Hidden Markov Models
   
-* For published research papers based on Alchemy (including datasets) refer to the Univerisy of Washington site:
-  * ???
+* For published research, Markov Logic Nets, and Datasets refer to the Univerisy of Washington site:
+  * Datasets:  http://alchemy.cs.washington.edu/data/
+  * Markov Logic Nets:  http://alchemy.cs.washington.edu/mlns/
+  * Research Papers:  http://alchemy.cs.washington.edu/papers/
