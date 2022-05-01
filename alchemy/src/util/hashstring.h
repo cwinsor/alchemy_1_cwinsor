@@ -77,7 +77,7 @@ class HashString
  public:
   size_t operator()(string const& str) const
   {
-    return hash<char const *>()(str.c_str());
+    return __gnu_cxx::hash<char const *>()(str.c_str());
   }
 };
 
