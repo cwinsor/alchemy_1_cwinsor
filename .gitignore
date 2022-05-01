@@ -1,5 +1,9 @@
+
 alchemy/bin
 alchemy/exdata
+.idea
+makefile.last
+*.oo
 
 # Prerequisites
 *.d
