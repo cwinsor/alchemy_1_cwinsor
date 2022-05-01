@@ -1,0 +1,1 @@
+infer -i smoking.mln -e smoking-train.db -r smoking.results -q Smokes -ms -maxSteps 20000
