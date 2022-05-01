@@ -109,7 +109,6 @@ class HashStrInt
  public:
   size_t operator()(const StrInt* const & s) const
   {
-      // zona
     return __gnu_cxx::hash<char const *>()(s->str_);
   }
 };

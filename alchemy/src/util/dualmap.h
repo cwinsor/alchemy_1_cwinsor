@@ -73,7 +73,7 @@ using namespace __gnu_cxx;
 #include "array.h"
 #include "equalstr.h"
 
-// zona
+
 typedef hash_map<const char*, int, __gnu_cxx::hash<const char*>, EqualStr> StrToIntMap;
 
 

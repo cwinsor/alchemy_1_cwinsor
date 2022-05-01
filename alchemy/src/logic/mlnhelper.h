@@ -67,9 +67,6 @@
 #ifndef MLNHELPER_H_NOV_4_2005
 #define MLNHELPER_H_NOV_4_2005
 
-// zona
-using namespace __gnu_cxx;
-
 //auxiliary data structures used by MLN
 
 
@@ -177,7 +174,6 @@ class HashFormulaAndClauses
 {
  public:
   size_t operator()(const FormulaAndClauses* const& f) const
-  // zona
   { return __gnu_cxx::hash<char const *>()(f->formula.c_str()); }
 };
 

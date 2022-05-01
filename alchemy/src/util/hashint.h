@@ -74,7 +74,6 @@ using namespace __gnu_cxx;
 class HashInt
 {
  public:
-    // zona
   size_t operator()(const int& i) const { return __gnu_cxx::hash<int>()(i); }
 };
 

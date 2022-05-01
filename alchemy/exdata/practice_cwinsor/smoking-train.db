@@ -1,0 +1,15 @@
+Friends(Anna, Bob)
+Friends(Bob, Anna)
+Friends(Anna, Edward)
+Friends(Edward, Anna)
+Friends(Bob, Chris)
+Friends(Chris, Bob)
+Friends(Chris, Daniel)
+Friends(Daniel, Chris)
+Smokes(Anna)
+Smokes(Bob)
+Smokes(Edward)
+Cancer(Anna)
+Cancer(Edward)
+
+
