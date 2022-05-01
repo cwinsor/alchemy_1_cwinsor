@@ -119,8 +119,13 @@ class Random
   }
 
 
-  int randomOneOf(const int& a) { return (int) (a * random()); }
-
+  // int randomOneOf(const int& a) { return (int) (a * random()); }
+  // zona
+    static int randomOneOf(int max_number) {
+        int minimum_number = 0;
+        int y = rand() % (max_number - minimum_number) + minimum_number;
+        return y;
+    }
 
  private:
   double randomA(long* initNum)
