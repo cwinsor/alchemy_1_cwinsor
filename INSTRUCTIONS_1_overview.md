@@ -1,7 +1,5 @@
 
 The steps in this and other INSTRUCTIONS files allow set up Alchemy.
-Alchemy "is a software package providing a series of algorithms for statistical relational learning and probabilistic logic inference, based on the Markov logic representation."
-It originated from University of Washington (Domingos et. al.)
 
 These steps are based on a fork of the original U.Washington repository
 this fork being the cwinsor git repository
